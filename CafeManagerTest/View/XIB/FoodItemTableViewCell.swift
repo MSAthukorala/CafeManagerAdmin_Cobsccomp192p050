@@ -16,6 +16,9 @@ class FoodItemTableViewCell: UITableViewCell {
     @IBOutlet weak var lblDiscount: UILabel!
     @IBOutlet weak var switchFoodStatus: UISwitch!
     
+    var delegate: FoodItemCellActions?
+    var foodItem: FoodItem?
+    
     var rowIndex = 0
     
     class var reuseIdentifier: String {
@@ -47,8 +50,14 @@ class FoodItemTableViewCell: UITableViewCell {
         switchFoodStatus.isOn = foodItem.isActive
         
         self.rowIndex = index
+        self.foodItem = foodItem
     }
     
     @IBAction func onFoodStatusChanged(_ sender: UISwitch) {
+        self.delegate?.onFoodItemStatusChanged(foodItem: self.foodItem!, status: sender.isOn)
     }
+}
+
+protocol FoodItemCellActions {
+    func onFoodItemStatusChanged(foodItem: FoodItem, status: Bool)
 }

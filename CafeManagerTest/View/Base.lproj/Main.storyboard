@@ -30,9 +30,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-AQ-qxp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-AQ-qxp">
                                 <rect key="frame" x="20" y="133" width="335" height="475"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mfc-Yb-b43" id="D3b-k4-7Uv"/>
+                                    <outlet property="delegate" destination="Mfc-Yb-b43" id="kZp-Nj-9kZ"/>
+                                </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vnc-5S-ar2">
                                 <rect key="frame" x="20" y="64" width="335" height="49"/>
@@ -137,15 +141,21 @@
                                     <segment title="Pending"/>
                                     <segment title="Preparing"/>
                                     <segment title="Ready"/>
-                                    <segment title="Complete"/>
+                                    <segment title="Done"/>
+                                    <segment title="Arrive"/>
+                                    <segment title="Cancel"/>
                                 </segments>
                                 <connections>
                                     <action selector="onSegChanged:" destination="xAS-cF-hcu" eventType="valueChanged" id="CBg-lH-THw"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CO-J4-sP5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CO-J4-sP5">
                                 <rect key="frame" x="20" y="71" width="335" height="537"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xAS-cF-hcu" id="wOR-MZ-2xd"/>
+                                    <outlet property="delegate" destination="xAS-cF-hcu" id="I7L-Lf-bZW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rNH-Z4-TOR"/>
@@ -162,6 +172,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Order" id="LE8-hj-UcY"/>
                     <connections>
+                        <outlet property="segtabs" destination="IKs-99-C8E" id="rf2-hc-G9l"/>
                         <outlet property="tblOrders" destination="9CO-J4-sP5" id="Tnf-Xd-9j3"/>
                     </connections>
                 </viewController>
@@ -383,9 +394,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="335" height="537"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-2Q-Kbo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sEE-2Q-Kbo">
                                 <rect key="frame" x="10" y="50" width="315" height="448"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iDm-Ds-Gc0" id="E2u-zN-VxL"/>
+                                    <outlet property="delegate" destination="iDm-Ds-Gc0" id="vYV-w4-hXZ"/>
+                                </connections>
                             </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qeJ-Dm-NZO">
                                 <rect key="frame" x="10" y="10" width="315" height="30"/>

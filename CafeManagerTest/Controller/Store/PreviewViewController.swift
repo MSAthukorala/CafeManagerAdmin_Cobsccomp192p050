@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import Loaf
 
 class PreviewViewController: UIViewController {
 
@@ -30,6 +31,8 @@ class PreviewViewController: UIViewController {
         if let flowLayout = self.collectionViewCategories?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: 80, height: 30)
         }
+        
+        tblFoodItems.register(UINib(nibName: FoodItemTableViewCell.nibName, bundle: nil), forCellReuseIdentifier: FoodItemTableViewCell.reuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +43,10 @@ class PreviewViewController: UIViewController {
 }
 
 extension PreviewViewController {
+    
     func filterFood(category: Category) {
-        
+        filteredFood = foodItemList.filter {$0.foodCategory == category.categoryName}
+        tblFoodItems.reloadData()
     }
     
     func refreshCategories() {
@@ -64,6 +69,22 @@ extension PreviewViewController {
                     self.collectionViewCategories.reloadData()
                 }
             })
+    }
+    
+    func changeFoodStatus(foodItem: FoodItem, status: Bool) {
+        databaseReference
+            .child("foodItems")
+            .child(foodItem.foodItemID)
+            .child("isActive")
+            .setValue(status) {
+                error, reference in
+                
+                if error != nil {
+                    Loaf("Food status not changed", state: .error, sender: self).show()
+                } else {
+                    Loaf("Food status changed", state: .success, sender: self).show()
+                }
+            }
     }
     
     func refreshFood() {
@@ -95,13 +116,18 @@ extension PreviewViewController {
                         }
                     }
                     
-                    
+                    self.filteredFood.append(contentsOf: self.foodItemList)
+                    self.tblFoodItems.reloadData()
                 }
             })
     }
 }
 
-extension PreviewViewController: UITableViewDataSource, UITableViewDelegate {
+extension PreviewViewController: UITableViewDataSource, UITableViewDelegate, FoodItemCellActions {
+    func onFoodItemStatusChanged(foodItem: FoodItem, status: Bool) {
+        self.changeFoodStatus(foodItem: foodItem, status: status)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredFood.count
     }
@@ -109,7 +135,7 @@ extension PreviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblFoodItems.dequeueReusableCell(withIdentifier: FoodItemTableViewCell.reuseIdentifier, for: indexPath) as! FoodItemTableViewCell
         cell.selectionStyle = .none
-//        cell.delegate = self
+        cell.delegate = self
         cell.configXIB(foodItem: filteredFood[indexPath.row], index: indexPath.row)
         return cell
     }

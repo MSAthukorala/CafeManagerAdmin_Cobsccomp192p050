@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>701601943007-cerp7pfo0pvkn7va7o1j396d6fqjh2im.apps.googleusercontent.com</string>
+	<string>307937979517-6mctenfo97713fp7argl1nasp99faia9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.701601943007-cerp7pfo0pvkn7va7o1j396d6fqjh2im</string>
+	<string>com.googleusercontent.apps.307937979517-6mctenfo97713fp7argl1nasp99faia9</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDapJCPq1xL86BXRTV8xzUw8y6S-fkxOnA</string>
+	<string>AIzaSyCfJlGyAPK-yCy40vj6InowOoUHl1y3jLA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>701601943007</string>
+	<string>307937979517</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.hishd.CafeManagerTest</string>
+	<string>NIBM.Cafe-NIBM-CoBscComp192P-050</string>
 	<key>PROJECT_ID</key>
-	<string>nibm-cafe-test</string>
+	<string>cafe-nibm-990f3</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nibm-cafe-test.appspot.com</string>
+	<string>cafe-nibm-990f3.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:701601943007:ios:862b150d763a735129486a</string>
+	<string>1:307937979517:ios:d6a9e8897a570314ff1514</string>
 	<key>DATABASE_URL</key>
-	<string>https://nibm-cafe-test-default-rtdb.firebaseio.com</string>
+	<string>https://cafe-nibm-990f3-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

@@ -2,7 +2,7 @@
 //  ImageFetcher.swift
 //  CafeManagerTest
 //
-//  Created by Hishara Dilshan on 2021-04-30.
+//  Created by user195128 on 2021-04-30.
 //
 
 import UIKit
